@@ -10,9 +10,9 @@ class Solution {
                     cnt++;
                 }
             }
-        }
-        if(cnt>=n){
-            return true;
+            if(cnt>=n){
+                return true;
+            }
         }
         return false;
     }
