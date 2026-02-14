@@ -16,14 +16,9 @@ class Solution {
             }
         }
         map.put(nums2[nums2.length-1],-1);
-        ArrayList<Integer> list=new ArrayList<>();
+        int res[]=new int[nums1.length];
         for(int i=0;i<nums1.length;i++){
-            list.add(map.get(nums1[i]));
-        }
-        int n=list.size();
-        int res[]=new int[n];
-        for(int i=0;i<n;i++){
-            res[i]=list.get(i);
+            res[i]=map.get(nums1[i]);
         }
         return res;
     }
