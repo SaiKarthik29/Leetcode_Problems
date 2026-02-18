@@ -1,9 +1,14 @@
 class Solution {
     public boolean hasAlternatingBits(int n) {
-        String binary=Integer.toBinaryString(n);
-        for(int i=0;i<binary.length()-1;i++){
-            if(binary.charAt(i)==binary.charAt(i+1))
-            return false;
+        int prevBit=n%2;
+        n=n/2;
+        while(n>0){
+            int currentBit=n%2;
+            if(currentBit==prevBit){
+                return false;
+            }
+            prevBit=currentBit;
+            n=n/2;
         }
         return true;
     }
