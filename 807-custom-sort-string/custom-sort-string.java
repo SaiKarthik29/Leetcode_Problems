@@ -1,27 +1,19 @@
 class Solution {
     public String customSortString(String order, String s) {
-        HashSet<Character> unique=new HashSet<>();
+        int freq[]=new int[26];
         for(char c:s.toCharArray()){
-            unique.add(c);
+            freq[c-'a']++;
         }
         StringBuilder sb=new StringBuilder();
-        for(int i=0;i<order.length();i++){
-            if(unique.contains(order.charAt(i))){
-                for(int j=0;j<s.length();j++){
-                    if(s.charAt(j)==order.charAt(i)){
-                        sb.append(s.charAt(j));
-                    }
-                }
+        for(char c:order.toCharArray()){
+            while(freq[c-'a']>0){
+                sb.append(c);
+                freq[c-'a']--;
             }
         }
-        HashSet<Character> remaining=new HashSet<>();
-        for(char c:sb.toString().toCharArray()){
-            remaining.add(c);
-        }
-
-        for(int i=0;i<s.length();i++){
-            if(!remaining.contains(s.charAt(i))){
-                sb.append(s.charAt(i));
+        for(char c:s.toCharArray()){
+            if(freq[c-'a']>0){
+                sb.append(c);
             }
         }
         return sb.toString();
