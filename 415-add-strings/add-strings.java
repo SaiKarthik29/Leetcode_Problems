@@ -1,24 +1,24 @@
 class Solution {
     public String addStrings(String num1, String num2) {
-        StringBuilder sb=new StringBuilder();
-        int index1=num1.length()-1;
-        int index2=num2.length()-1;
+        int idx1=num1.length()-1;
+        int idx2=num2.length()-1;
         int carry=0;
-        while(index1>=0 || index2>=0 || carry!=0){
+        StringBuilder sb=new StringBuilder();
+        while(idx1>=0 || idx2>=0 || carry!=0){
             int frstNumber=0;
-            if(index1>=0){
-                frstNumber=num1.charAt(index1)-'0';
-                index1--;
+            if(idx1>=0){
+                frstNumber=num1.charAt(idx1)-'0';
+                idx1--;
             }
-            int secondNumber=0;
-            if(index2>=0){
-                secondNumber=num2.charAt(index2)-'0';
-                index2--;
+            int secNo=0;
+            if(idx2>=0){
+                secNo=num2.charAt(idx2)-'0';
+                idx2--;
             }
-            int sum=frstNumber+secondNumber+carry;
-            int digitToWrite=sum%10;
+            int sum=frstNumber+secNo+carry;
+            int d=sum%10;
             carry=sum/10;
-            sb.append(digitToWrite);
+            sb.append(d);
         }
         return sb.reverse().toString();
     }
