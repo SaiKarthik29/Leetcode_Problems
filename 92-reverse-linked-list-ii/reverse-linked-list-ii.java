@@ -14,23 +14,23 @@ class Solution {
             return head;
         }
         if(left==1){
-            return reverseFirstN(head,right);
+            return reverse(head,right);
         }
         ListNode prev=head;
         for(int i=1;i<left-1;i++){
             prev=prev.next;
         }
-        prev.next=reverseFirstN(prev.next,right-left+1);
+        prev.next=reverse(prev.next,right-left+1);
         return head;
     }
-    private ListNode reverseFirstN(ListNode head,int n){
+    private ListNode reverse(ListNode head,int n){
         ListNode prev=null;
         ListNode curr=head;
         while(n-->0){
-            ListNode nextNode=curr.next;
+            ListNode nn=curr.next;
             curr.next=prev;
             prev=curr;
-            curr=nextNode;
+            curr=nn;
         }
         head.next=curr;
         return prev;
