@@ -11,9 +11,6 @@
  */
 public class Solution {
     public boolean hasCycle(ListNode head) {
-        if(head==null){
-            return false;
-        }
         ListNode rabbit=head;
         ListNode turtle=head;
         while(rabbit!=null && rabbit.next!=null){
