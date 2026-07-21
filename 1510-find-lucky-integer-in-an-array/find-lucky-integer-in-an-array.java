@@ -1,15 +1,16 @@
 class Solution {
     public int findLucky(int[] arr) {
         HashMap<Integer,Integer> map=new HashMap<>();
-        for(int i=0;i<arr.length;i++){
-            map.put(arr[i],map.getOrDefault(arr[i],0)+1);
+        for(int num:arr){
+            map.put(num,map.getOrDefault(num,0)+1);
         }
-        int max=-1;
-        for(int key:map.keySet()){
-            if(key==map.get(key)){
-                max=Math.max(max,key);
+        List<Map.Entry<Integer,Integer>> lst=new ArrayList<>(map.entrySet());
+        Collections.sort(lst, (a,b)-> b.getKey()-a.getKey());
+        for(Map.Entry<Integer,Integer> entry:lst){
+            if(entry.getKey().equals(entry.getValue())){
+                return entry.getKey();
             }
         }
-        return max;
+        return -1;
     }
 }
